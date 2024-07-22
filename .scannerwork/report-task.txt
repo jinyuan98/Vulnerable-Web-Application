@@ -1,0 +1,6 @@
+projectKey=OWASP
+serverUrl=http://192.168.0.2:9000
+serverVersion=10.6.0.92116
+dashboardUrl=http://192.168.0.2:9000/dashboard?id=OWASP
+ceTaskId=904aa474-b112-4c15-8685-f5dd68b17fcf
+ceTaskUrl=http://192.168.0.2:9000/api/ce/task?id=904aa474-b112-4c15-8685-f5dd68b17fcf
