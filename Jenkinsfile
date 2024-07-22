@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('Checkout') {
             steps {
-                git branch:'master', url: 'https://github.com/OWASP/Vulnerable-Web-Application.git'
+                git branch: 'master', url: 'https://github.com/jinyuan98/Vulnerable-Web-Application.git'
             }
         }
 
@@ -15,7 +15,9 @@ pipeline {
                         sh """
                         ${scannerHome}/bin/sonar-scanner \
                         -Dsonar.projectKey=OWASP \
-                        -Dsonar.sources=.
+                        -Dsonar.sources=. \
+                        -Dsonar.host.url=http://172.17.0.2:9000 \
+                        -X
                         """
                     }
                 }
@@ -24,7 +26,10 @@ pipeline {
     }
     post {
         always {
-            recordIssues enabledForFailure: true, tool: sonarQube()
+            script {
+                junit testResults: '**/target/surefire-reports/TEST-*.xml'
+                recordIssues enabledForFailure: true, tool: sonarQube()
+            }
         }
     }
 }
