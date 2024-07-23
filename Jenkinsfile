@@ -13,7 +13,7 @@ pipeline {
                     def scannerHome = tool 'SonarQube'
                     withSonarQubeEnv('SonarQube') {
                         sh """
-                        ${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=OWASP1 \
+                        ${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=OWASP2 \
                         -Dsonar.sources=.
                         """
                     }
